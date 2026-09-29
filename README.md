@@ -4,6 +4,8 @@
 
 Website: [brainrotcoin.me](https://brainrotcoin.me) · X: [@rotdotfun](https://x.com/rotdotfun)
 
+**Repos:** [brainrot-app](https://github.com/brainrot-earn/brainrot-app) (rewards engine + earn page, you are here) · [brainrotcoin.me](https://github.com/brainrot-earn/brainrotcoin.me) (the website)
+
 ---
 
 ## Status: early prototype
