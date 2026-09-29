@@ -17,7 +17,7 @@ This repo is the start of the Brainrot app. Right now it contains the **rewards 
 | Rewards engine (`src/`) | ✅ Working prototype, tested |
 | Earn page (`web/earn.html`) | 🧪 Preview: reads your TikTok file and shows your score, doesn't save or pay yet |
 | Saving submissions (database) | ⏳ Not built yet |
-| Hourly payouts to wallets | ⏳ Not built yet |
+| Payouts to wallets every 30 minutes | ⏳ Not built yet |
 | Instagram Reels & YouTube Shorts | 🗓 Planned |
 
 Nothing here pays out tokens yet. Brainrot launches once saving and payouts work. Updates will be posted on [@rotdotfun](https://x.com/rotdotfun) as each part is built.
