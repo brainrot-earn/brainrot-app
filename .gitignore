@@ -1,2 +1,11 @@
 node_modules/
 .DS_Store
+
+# Secrets: never commit these
+.env
+.env.*
+*.key
+*.pem
+*keypair*.json
+wallet*.json
+id.json
