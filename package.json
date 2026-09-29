@@ -1,0 +1,12 @@
+{
+  "name": "brainrot-app",
+  "version": "0.1.0",
+  "description": "Scroll-to-earn rewards engine for Brainrot ($ROT). Early prototype.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node --test",
+    "demo": "node examples/demo.js"
+  },
+  "engines": { "node": ">=18" },
+  "license": "MIT"
+}
