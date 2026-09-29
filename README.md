@@ -12,13 +12,20 @@ This repo is the start of the Brainrot app. Right now it contains the **rewards 
 
 | Part | Status |
 |---|---|
-| Rewards engine (this repo) | ✅ Working prototype, tested |
-| TikTok connection | ⏳ Not built yet |
-| Payouts to wallets | ⏳ Not built yet |
-| App (iOS / Android) | ⏳ Not built yet |
+| Rewards engine (`src/`) | ✅ Working prototype, tested |
+| Earn page (`web/earn.html`) | 🧪 Preview: reads your TikTok file and shows your score, doesn't save or pay yet |
+| Saving submissions (database) | ⏳ Not built yet |
+| Hourly payouts to wallets | ⏳ Not built yet |
 | Instagram Reels & YouTube Shorts | 🗓 Planned |
 
-Nothing here connects to TikTok or pays out tokens yet. Updates will be posted on [@rotdotfun](https://x.com/rotdotfun) as each part is built.
+Nothing here pays out tokens yet. Brainrot launches once saving and payouts work. Updates will be posted on [@rotdotfun](https://x.com/rotdotfun) as each part is built.
+
+## How the earn page works
+
+1. Connect your Phantom wallet.
+2. Upload the data file TikTok gives you (Settings → Account → Download your data, JSON format).
+3. The page reads your watch history **in your browser**. The file is never uploaded anywhere. You can check this in [`web/earn.html`](web/earn.html): the file is only opened with `JSZip` / `file.text()` and nothing is sent over the network.
+4. It estimates your watch time from the gaps between videos and scores it with the same rules as the engine below.
 
 ## How the rewards engine works
 
@@ -61,6 +68,7 @@ src/sessions.js      watch events -> sessions
 src/rewards.js       sessions -> $ROT (tiers, anti-abuse, daily cap)
 src/index.js         full pipeline for one user's day
 examples/demo.js     sample day
+web/earn.html        the earn page on brainrotcoin.me
 test/                tests
 ```
 

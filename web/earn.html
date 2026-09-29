@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Earn $ROT · Brainrot</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --night:#1C2233; --wall:#28324A; --slab:#313D58; --slab-edge:#3E4C6B;
+  --clay:#F09AA0; --clay-deep:#D9727B; --ink:#F4EEE8; --muted:#AAB3C8;
+  --glow:#9FE7F0; --sofa:#8FB07C; --warn:#F5C84B;
+  --display:"Bagel Fat One","Arial Rounded MT Bold","Trebuchet MS",sans-serif;
+  --body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--night);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55}
+.wrap{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:0 60px}
+nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:18px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;font-family:var(--display);font-size:22px}
+.brand img{width:40px;height:40px;border-radius:50%;border:3px solid var(--clay)}
+nav a.back{color:var(--muted);text-decoration:none;font-weight:500}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(36px,6vw,56px);line-height:1.05;margin:26px 0 10px}
+h1 em{font-style:normal;color:var(--clay)}
+.lede{color:var(--muted);margin:0 0 10px;max-width:40em}
+.banner{background:#F5C84B1A;border:1px solid #F5C84B55;color:var(--warn);border-radius:14px;padding:12px 16px;font-size:14px;margin:18px 0 26px}
+.steps{display:flex;flex-direction:column;gap:16px}
+.card{background:var(--slab);border-radius:22px;padding:22px;display:flex;flex-direction:column;gap:12px}
+.card h2{margin:0;font-size:19px;display:flex;align-items:center;gap:12px}
+.n{font-family:var(--display);font-weight:400;color:var(--clay);font-size:26px;line-height:1}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;font:700 15px var(--body);border-radius:999px;padding:11px 20px;background:var(--clay);color:#2A1518;box-shadow:0 4px 0 var(--clay-deep);border:0;cursor:pointer}
+.btn:hover{transform:translateY(1px);box-shadow:0 3px 0 var(--clay-deep)}
+.btn:focus-visible{outline:3px solid var(--glow);outline-offset:3px}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--slab-edge)}
+.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none}
+.chip{font-family:var(--mono);font-size:13px;background:var(--night);border-radius:999px;padding:7px 12px;color:var(--glow);word-break:break-all}
+.drop{border:2px dashed var(--slab-edge);border-radius:18px;padding:26px;text-align:center;color:var(--muted);cursor:pointer;transition:border-color .15s,background .15s}
+.drop:hover,.drop.over{border-color:var(--glow);background:#9FE7F00D}
+.drop strong{color:var(--ink)}
+.drop input{display:none}
+.msg{font-size:14px;border-radius:12px;padding:10px 14px}
+.msg.err{background:#F09AA01F;color:var(--clay)}
+.msg.ok{background:#8FB07C24;color:var(--sofa)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.stat{background:var(--night);border-radius:14px;padding:14px}
+.stat .l{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.stat .v{font-family:var(--display);font-size:28px;line-height:1.2;font-variant-numeric:tabular-nums}
+.stat .v.pts{color:var(--clay)}
+.tablewrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 10px;border-bottom:1px solid var(--slab-edge);font-weight:500}
+td{padding:9px 10px;border-bottom:1px solid #3E4C6B66;white-space:nowrap}
+td.num,th.num{text-align:right}
+td .flag{font-size:12px;color:var(--warn)}
+.fine{font-size:13px;color:var(--muted)}
+details{background:var(--wall);border-radius:16px;padding:14px 18px}
+summary{cursor:pointer;font-weight:700}
+details ol{color:var(--muted);font-size:15px;margin:10px 0 0;padding-left:20px}
+@media (max-width:600px){.stats{grid-template-columns:1fr}.card{padding:18px}}
+@media (prefers-reduced-motion:reduce){.btn:hover{transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="brand" href="index.html"><img src="favicon.png" alt="">Brainrot</a>
+    <a class="back" href="index.html">← Back to site</a>
+  </nav>
+
+  <h1>Turn your scrolling into <em>$ROT.</em></h1>
+  <p class="lede">Connect your wallet, upload your TikTok data, and see what your watch time earns.</p>
+  <div class="banner" id="banner"><strong>Preview.</strong> This page calculates your score, but it doesn't save it or pay out yet. Saving and payouts turn on at launch. Once live, you get paid within an hour of submitting.</div>
+
+  <div class="steps">
+    <section class="card" aria-labelledby="s1">
+      <h2 id="s1"><span class="n">1</span>Connect your wallet</h2>
+      <p>Rewards are sent to this Solana wallet. Each wallet can only be linked to one TikTok account.</p>
+      <div class="row">
+        <button class="btn" id="connect" type="button">Connect Phantom</button>
+        <span class="chip" id="wallet" hidden></span>
+      </div>
+      <div class="msg err" id="walletErr" hidden></div>
+    </section>
+
+    <section class="card" aria-labelledby="s2">
+      <h2 id="s2"><span class="n">2</span>Upload your TikTok data</h2>
+      <p>Upload the .zip or .json file TikTok gives you. It's read on your device. The file itself is never uploaded anywhere.</p>
+      <label class="drop" id="drop" for="file">
+        <input type="file" id="file" accept=".zip,.json,application/json,application/zip">
+        <strong>Drop your file here</strong><br>or tap to choose it
+      </label>
+      <div class="row"><button class="btn ghost" id="sample" type="button">Try with sample data</button></div>
+      <div class="msg" id="fileMsg" hidden></div>
+      <details>
+        <summary>How do I get my TikTok data?</summary>
+        <ol>
+          <li>In TikTok, go to Profile → ☰ menu → Settings and privacy.</li>
+          <li>Tap Account → Download your data.</li>
+          <li>Choose All data and the JSON format, then tap Request data.</li>
+          <li>When it's ready (a few hours to a couple of days), download it from the Download data tab.</li>
+        </ol>
+      </details>
+    </section>
+
+    <section class="card" aria-labelledby="s3" id="results" hidden>
+      <h2 id="s3"><span class="n">3</span>Your score</h2>
+      <p id="who"></p>
+      <div class="stats">
+        <div class="stat"><div class="l">Videos watched</div><div class="v" id="stVideos">0</div></div>
+        <div class="stat"><div class="l">Counted watch time</div><div class="v" id="stTime">0m</div></div>
+        <div class="stat"><div class="l">Scroll points</div><div class="v pts" id="stPts">0</div></div>
+      </div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Day</th><th class="num">Videos</th><th class="num">Watch time</th><th class="num">Points</th></tr></thead>
+          <tbody id="days"></tbody>
+        </table>
+      </div>
+      <p class="fine">Scored: the last 7 days in your file. Watch time is estimated from the time between videos. Full points for your first 2 hours a day, half for the next 2, then 10%. Daily cap: <span id="cap"></span> points. Points are paid out in $ROT from the rewards pool every hour, up to a daily budget set by what's unlocked.</p>
+      <div class="row">
+        <button class="btn" id="submit" type="button" disabled>Submit for the next hourly payout</button>
+        <span class="fine">Turns on at launch</span>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+/* ---------- Rewards engine (same rules as the brainrot-app prototype) ---------- */
+var MIN = 60000, HOUR = 60 * MIN, DAY = 24 * HOUR;
+var CONFIG = {
+  pointsPerMinute: 1,
+  sessionGapMs: 3 * MIN,     // a gap longer than this starts a new session
+  maxPerVideoMs: 3 * MIN,    // most time a single view can count for
+  lastVideoMs: 20 * 1000,    // time credited to the last video in a session
+  minSessionMs: 1 * MIN,
+  tiers: [{ upTo: 2 * HOUR, m: 1 }, { upTo: 4 * HOUR, m: 0.5 }, { upTo: Infinity, m: 0.1 }],
+  dailyCap: 200,
+  daysScored: 7
+};
+
+function tieredMinutes(ms, already) {
+  var remaining = ms, cursor = already, weighted = 0, floor = 0;
+  for (var i = 0; i < CONFIG.tiers.length && remaining > 0; i++) {
+    var t = CONFIG.tiers[i], start = floor; floor = t.upTo;
+    if (cursor >= t.upTo) continue;
+    var from = Math.max(cursor, start), used = Math.min(t.upTo - from, remaining);
+    weighted += (used / MIN) * t.m; remaining -= used; cursor = from + used;
+  }
+  return weighted;
+}
+
+// views: sorted [{t: ms, link}] -> sessions [{start, watchMs, videos}]
+function toSessions(views) {
+  var sessions = [], cur = null;
+  for (var i = 0; i < views.length; i++) {
+    var v = views[i], next = views[i + 1];
+    var gap = next ? next.t - v.t : Infinity;
+    var credit = gap <= CONFIG.sessionGapMs ? Math.min(gap, CONFIG.maxPerVideoMs) : CONFIG.lastVideoMs;
+    if (!cur) { cur = { start: v.t, watchMs: 0, videos: 0 }; sessions.push(cur); }
+    cur.watchMs += credit; cur.videos++;
+    if (gap > CONFIG.sessionGapMs) cur = null;
+  }
+  return sessions;
+}
+
+function scoreDays(views) {
+  var byDay = {};
+  toSessions(views).forEach(function (s) {
+    var key = new Date(s.start).toISOString().slice(0, 10);
+    (byDay[key] = byDay[key] || []).push(s);
+  });
+  return Object.keys(byDay).sort().map(function (key) {
+    var counted = 0, pts = 0, videos = 0, short = 0;
+    byDay[key].forEach(function (s) {
+      videos += s.videos;
+      if (s.watchMs < CONFIG.minSessionMs) { short++; return; }
+      pts += tieredMinutes(s.watchMs, counted) * CONFIG.pointsPerMinute;
+      counted += s.watchMs;
+    });
+    var capped = pts > CONFIG.dailyCap;
+    return { day: key, videos: videos, watchMs: counted, points: Math.round(Math.min(pts, CONFIG.dailyCap)), capped: capped, short: short };
+  });
+}
+
+/* ---------- Reading the TikTok export ---------- */
+function findKey(obj, names) {
+  if (!obj || typeof obj !== "object") return undefined;
+  for (var k in obj) if (names.indexOf(k.toLowerCase()) !== -1) return obj[k];
+  return undefined;
+}
+function parseDate(s) {
+  if (typeof s !== "string") return NaN;
+  var m = s.match(/^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2}):(\d{2})/);
+  return m ? Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], +m[6]) : NaN;
+}
+function extract(data) {
+  var activity = findKey(data, ["your activity", "activity"]);
+  var wh = findKey(activity, ["watch history", "video browsing history"]);
+  var list = findKey(wh, ["videolist", "videolist"]) || (Array.isArray(wh) ? wh : null);
+  if (!Array.isArray(list)) throw new Error("Couldn't find your watch history in this file. Make sure you picked the JSON format and 'All data' when requesting it.");
+  var profile = findKey(data, ["profile"]);
+  var pinfo = findKey(profile, ["profile info", "profile information"]);
+  var pmap = findKey(pinfo, ["profilemap"]) || pinfo || {};
+  var user = findKey(pmap, ["username", "user name"]) || null;
+  var seen = {}, views = [];
+  list.forEach(function (item) {
+    var t = parseDate(findKey(item, ["date"]));
+    var link = findKey(item, ["link", "videolink"]) || "";
+    if (isNaN(t)) return;
+    var key = t + "|" + link;
+    if (seen[key]) return; seen[key] = 1;
+    views.push({ t: t, link: link });
+  });
+  views.sort(function (a, b) { return a.t - b.t; });
+  if (!views.length) throw new Error("Your watch history is empty in this file.");
+  return { user: user, views: views };
+}
+
+async function readFile(file) {
+  if (/\.zip$/i.test(file.name) || file.type.indexOf("zip") !== -1) {
+    if (!window.JSZip) throw new Error("Couldn't open .zip files right now. Unzip it and upload the .json file inside instead.");
+    var zip = await JSZip.loadAsync(file);
+    var jsonFile = Object.values(zip.files).find(function (f) { return !f.dir && /\.json$/i.test(f.name); });
+    if (!jsonFile) throw new Error("This .zip doesn't contain a .json file. Request your TikTok data again and choose the JSON format.");
+    return JSON.parse(await jsonFile.async("string"));
+  }
+  return JSON.parse(await file.text());
+}
+
+/* ---------- Sample data (clearly fake, for trying the page) ---------- */
+function sampleData() {
+  var list = [], now = Date.now(), base = now - (now % DAY);
+  function scroll(dayOffset, hour, count, secs) {
+    var t = base - dayOffset * DAY + hour * HOUR;
+    for (var i = 0; i < count; i++) {
+      var d = new Date(t).toISOString().replace("T", " ").slice(0, 19);
+      list.push({ Date: d, Link: "https://www.tiktokv.com/share/video/sample" + dayOffset + "-" + hour + "-" + i + "/" });
+      t += (secs + Math.round(Math.random() * 10)) * 1000;
+    }
+  }
+  for (var d = 0; d < 9; d++) {
+    scroll(d, 8, 30 + d * 3, 22);
+    scroll(d, 13, 60, 25);
+    scroll(d, 22, 150 + (d % 3) * 120, 24);
+  }
+  return { "Profile": { "Profile Info": { "ProfileMap": { "userName": "sample_scroller" } } },
+           "Your Activity": { "Watch History": { "VideoList": list.reverse() } } };
+}
+
+/* ---------- UI ---------- */
+var $ = function (id) { return document.getElementById(id); };
+var state = { wallet: null, result: null };
+$("cap").textContent = CONFIG.dailyCap;
+
+function showMsg(el, text, kind) { el.textContent = text; el.className = "msg " + kind; el.hidden = false; }
+function fmt(ms) { var h = Math.floor(ms / HOUR), m = Math.round((ms % HOUR) / MIN); return h ? h + "h " + m + "m" : m + "m"; }
+function short(addr) { return addr.slice(0, 4) + "…" + addr.slice(-4); }
+
+function getProvider() {
+  if (window.phantom && window.phantom.solana && window.phantom.solana.isPhantom) return window.phantom.solana;
+  if (window.solana && window.solana.isPhantom) return window.solana;
+  return null;
+}
+$("connect").addEventListener("click", async function () {
+  var p = getProvider();
+  $("walletErr").hidden = true;
+  if (!p) {
+    showMsg($("walletErr"), "Phantom wasn't found. On a computer, install the Phantom extension. On your phone, open this page inside the Phantom app's browser.", "err");
+    return;
+  }
+  try {
+    var res = await p.connect();
+    state.wallet = res.publicKey.toString();
+    $("wallet").textContent = short(state.wallet);
+    $("wallet").title = state.wallet;
+    $("wallet").hidden = false;
+    $("connect").textContent = "Connected";
+    $("connect").disabled = true;
+  } catch (e) {
+    showMsg($("walletErr"), "Connection was cancelled. Tap Connect Phantom to try again.", "err");
+  }
+});
+
+function render(parsed, isSample) {
+  var days = scoreDays(parsed.views);
+  var lastDay = days.length ? days[days.length - 1].day : null;
+  var cutoff = lastDay ? Date.parse(lastDay + "T00:00:00Z") - (CONFIG.daysScored - 1) * DAY : 0;
+  var recent = days.filter(function (d) { return Date.parse(d.day + "T00:00:00Z") >= cutoff; });
+  var tv = 0, tt = 0, tp = 0;
+  $("days").innerHTML = "";
+  recent.slice().reverse().forEach(function (d) {
+    tv += d.videos; tt += d.watchMs; tp += d.points;
+    var tr = document.createElement("tr");
+    var date = new Date(d.day + "T12:00:00Z").toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric", timeZone: "UTC" });
+    tr.innerHTML = "<td></td><td class='num'></td><td class='num'></td><td class='num'></td>";
+    tr.children[0].textContent = date;
+    tr.children[1].textContent = d.videos.toLocaleString();
+    tr.children[2].textContent = fmt(d.watchMs);
+    tr.children[3].textContent = d.points.toLocaleString();
+    if (d.capped) { var s = document.createElement("div"); s.className = "flag"; s.textContent = "daily cap"; tr.children[3].appendChild(s); }
+    $("days").appendChild(tr);
+  });
+  $("stVideos").textContent = tv.toLocaleString();
+  $("stTime").textContent = fmt(tt);
+  $("stPts").textContent = tp.toLocaleString();
+  $("who").textContent = (isSample ? "Sample data. " : "") + "TikTok account: " + (parsed.user ? "@" + parsed.user : "not found in file") +
+    " · " + parsed.views.length.toLocaleString() + " views in your file.";
+  $("results").hidden = false;
+  $("results").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+async function handleFile(file) {
+  $("fileMsg").hidden = true;
+  try {
+    showMsg($("fileMsg"), "Reading " + file.name + "…", "ok");
+    var data = await readFile(file);
+    var parsed = extract(data);
+    showMsg($("fileMsg"), "Found " + parsed.views.length.toLocaleString() + " videos in your watch history.", "ok");
+    render(parsed, false);
+  } catch (e) {
+    var text = e instanceof SyntaxError ? "That file isn't valid JSON. Upload the file exactly as TikTok gave it to you." : e.message;
+    showMsg($("fileMsg"), text, "err");
+  }
+}
+$("file").addEventListener("change", function (e) { if (e.target.files[0]) handleFile(e.target.files[0]); e.target.value = ""; });
+var drop = $("drop");
+["dragenter", "dragover"].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add("over"); }); });
+["dragleave", "drop"].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.remove("over"); }); });
+drop.addEventListener("drop", function (e) { if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]); });
+$("sample").addEventListener("click", function () {
+  var parsed = extract(sampleData());
+  showMsg($("fileMsg"), "Loaded sample data. This isn't a real account.", "ok");
+  render(parsed, true);
+});
+</script>
+</body>
+</html>
